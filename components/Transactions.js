@@ -6,9 +6,9 @@ export default function Transactions({ data }) {
   return (
     <FlatList
       data={data}
-      style={{ flex: 1 }}
+      style={{ flex: 1, maxHeight: '40%' }}
       renderItem={({ item }) => <TransactionItem data={item} />}
-      keyExtractor={(item) => item.date}
+      keyExtractor={(item) => item.id}
       ListHeaderComponent={() => (
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Transacciones</Text>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ecf0f1',
     borderBottomWidth: 1,
     borderBottomStyle: 'solid',
-    borderBottomColor: '#ddd',
+    borderBottomColor: '#ddd'
   },
   headerTitle: {
     color: '#666',

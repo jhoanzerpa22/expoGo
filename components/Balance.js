@@ -8,17 +8,27 @@ import {
   Platform,
   TouchableOpacity
 } from 'react-native';
-import { LineChart } from 'react-native-chart-kit';
+import { useNavigation } from '@react-navigation/native';
+//import { LineChart } from 'react-native-chart-kit';
 
-export default function Balance({ gastos }) {
-  const [, regenerateRadomData] = useState();
-  const forceUpdate = useCallback(() => regenerateRadomData({}), []);
+export default function Balance({ gastos, showResume }) {
+  
+  const navigation = useNavigation();
+  //const [, regenerateRadomData] = useState();
+  //const forceUpdate = useCallback(() => regenerateRadomData({}), []);
 
-  const [expanded, setExpanded] = useState(false);
+  /*const [expanded, setExpanded] = useState(false);
 
   const toggleExpand = () => {
         setExpanded(!expanded);
-    };
+    };*/
+
+  const onDetail = () => {
+    console.log('Detail');
+    navigation.navigate('Detail', {
+        gastos: gastos,
+      });
+  };
 
   const sueldo = 880;
   const total_gastos_fijos = gastos.reduce((accumulator, current) => {
@@ -32,7 +42,8 @@ export default function Balance({ gastos }) {
   }, 0);
 
   return (
-    <Pressable onPress={forceUpdate}>
+    <Pressable onPress={onDetail}>
+    {showResume ? (
     <View style={styles.container}>
       <View style={styles.layout}>
         <View>
@@ -43,7 +54,19 @@ export default function Balance({ gastos }) {
         </View>
       </View>
     </View>
-    <View style={styles.container}>
+    ) : (
+      <View>
+      <View style={styles.container}>
+        <View style={styles.layout}>
+          <View>
+            <Text style={styles.title}>Ingreso Mensual</Text>
+            <Text style={styles.balance}>
+              ${(sueldo).toFixed(2)}
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.container}>
       <View style={styles.layout}>
         <View>
           <Text style={styles.title}>Gastos Fijos</Text>
@@ -83,9 +106,12 @@ export default function Balance({ gastos }) {
         </View>
         </View>
     </View>
+    </View>
+    )}
     </Pressable>
   );
 }
+
 /**
  * 
         <LineChart

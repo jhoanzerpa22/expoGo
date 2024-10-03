@@ -9,7 +9,6 @@ export default function TransactionItem({ data }) {
           <View>
             <Text style={styles.title}>{data.title}</Text>
             <Text style={styles.type}>{data.type}</Text>
-            <Text style={styles.date}>{data.date}</Text>
           </View>
         </View>
         <Text style={styles.amount}>${data.amount}</Text>
