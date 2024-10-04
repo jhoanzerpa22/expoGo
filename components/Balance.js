@@ -47,12 +47,12 @@ export default function Balance({ gastos, showResume }) {
     <View style={styles.container}>
       <View style={styles.layout}>
         <View>
-          <Text style={styles.title}>Ingreso Mensual</Text>
-          <Text style={styles.balance}>
-            ${(sueldo).toFixed(2)}
+          <Text style={styles.title}>Saldo</Text>
+          <Text style={[styles.saldo, (sueldo - (total_gastos_fijos + total_deudas + total_gastos)).toFixed(2) <= 300 && styles.saldoMin]}>
+            ${(sueldo - (total_gastos_fijos + total_deudas + total_gastos)).toFixed(2)}
           </Text>
         </View>
-      </View>
+        </View>
     </View>
     ) : (
       <View>
