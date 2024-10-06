@@ -17,31 +17,31 @@ export default function Home({ route }) {
 
   const data = [
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Universidad',
       date: 'Today, 13:21',
-      amount: 60,
+      amount: 50,
       icon: '#0091FF',
       type: 'fijo'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Escuela',
       date: 'Yesterday, 20:07',
-      amount: 88,
+      amount: 73,
       icon: '#0091FF',
       type: 'fijo'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Internet',
       date: 'Thursday',
-      amount: 40,
+      amount: 33,
       icon: '#0091FF',
       type: 'fijo'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Gimnasia',
       date: 'Wensday',
       amount: 15,
@@ -49,67 +49,88 @@ export default function Home({ route }) {
       type: 'fijo'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Beisbol',
-      amount: 15,
+      amount: 13,
       icon: '#0091FF',
       type: 'fijo'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Comida',
       amount: 200,
       icon: '#34D058',
       type: 'fijo'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Gasolina',
       amount: 40,
       icon: '#FB8E41',
       type: 'fijo'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Pote',
       amount: 20,
       icon: '#AFB403',
       type: 'deuda'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Cashea Ary',
-      amount: 25,
+      amount: 30,
       icon: '#EEF40C',
       type: 'deuda'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Cashea Macuto',
-      amount: 9,
+      amount: 8,
       icon: '#EEF40C',
       type: 'deuda'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
       title: 'Cashea Utiles',
-      amount: 24,
-      icon: '#EEF40C',
-      type: 'deuda'
-    },
-    {
-      id: Math.random().toString(), // Genera un ID único
-      title: 'Cashea Comida',
       amount: 20,
       icon: '#EEF40C',
       type: 'deuda'
     },
     {
-      id: Math.random().toString(), // Genera un ID único
+      id: Math.random().toString(),
+      title: 'Cashea Comida',
+      amount: 17,
+      icon: '#EEF40C',
+      type: 'deuda'
+    },
+    {
+      id: Math.random().toString(),
       title: 'Cashea Comida 2',
       amount: 10,
       icon: '#EEF40C',
       type: 'deuda'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Cargador',
+      amount: 7,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Recargas',
+      amount: 6,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Perros sobrinos',
+      amount: 16,
+      icon: '#FF0000',
+      type: 'gasto'
     },
   ];
   

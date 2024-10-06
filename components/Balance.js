@@ -30,7 +30,7 @@ export default function Balance({ gastos, showResume }) {
       });
   };
 
-  const sueldo = 880;
+  const sueldo = 889;
   const total_gastos_fijos = gastos.reduce((accumulator, current) => {
     return accumulator + (current.type == 'fijo' ? current.amount : 0);
   }, 0);
