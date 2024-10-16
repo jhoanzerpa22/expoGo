@@ -16,7 +16,7 @@ export default function Gasto({ route }) {
   const addGastos = (gastos) => {
     const newGasto = {
       id: gastos.id,
-      title: gastos.description,
+      title: gastos.title,
       amount: parseFloat(gastos.amount),
       icon: '#FF0000',
       type: 'gasto'

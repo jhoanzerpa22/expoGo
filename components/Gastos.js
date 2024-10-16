@@ -12,21 +12,21 @@ import {
 
 export default function Gastos({ saveGastos }) {
     const [amount, setAmount] = useState('');
-    const [description, setDescription] = useState('');
-    const [expenses, setExpenses] = useState([]);
+    const [title, setTitle] = useState('');
+    const [gastos, setGastos] = useState([]);
   
-    const addExpense = () => {
-      if (amount && description) {
-        const newExpense = {
+    const addGasto = () => {
+      if (amount && title) {
+        const newGasto = {
           id: Math.random().toString(), // Genera un ID único
           amount: parseFloat(amount),
-          description: description,
+          title: title
         };
-        setExpenses([...expenses, newExpense]);
+        setGastos([...gastos, newGasto]);
         setAmount('');
-        setDescription('');
+        setTitle('');
 
-        saveGastos(newExpense);
+        saveGastos(newGasto);
       }
     };
 
@@ -44,20 +44,20 @@ export default function Gastos({ saveGastos }) {
       <TextInput
         style={styles.input}
         placeholder="Descripción"
-        value={description}
-        onChangeText={setDescription}
+        value={title}
+        onChangeText={setTitle}
       />
-      <Button title="Agregar Gasto" onPress={addExpense} />
+      <Button title="Agregar Gasto" onPress={addGasto} />
     </View>
   );
 }
 
 /**<FlatList
-        data={expenses}
+        data={gastos}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={styles.expenseItem}>
-            <Text>{item.description}: ${item.amount.toFixed(2)}</Text>
+          <View style={styles.gastoItem}>
+            <Text>{item.title}: ${item.amount.toFixed(2)}</Text>
           </View>
         )}
       />*/
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
       padding: 10,
       marginBottom: 10,
     },
-    expenseItem: {
+    gastoItem: {
       padding: 10,
       borderBottomWidth: 1,
       borderBottomColor: '#ccc',

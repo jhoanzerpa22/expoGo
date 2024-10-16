@@ -6,6 +6,9 @@ import { useNavigation } from '@react-navigation/native';
 import CircleButton from '../components/CircleButton';
 //import IconButton from '../components/IconButton';
 
+import * as SQLite from 'expo-sqlite';
+//import SQLite from "expo-sqlite";
+
 import Constants from 'expo-constants';
 
 import Balance from '../components/Balance';
@@ -14,6 +17,27 @@ import Transactions from '../components/Transactions';
 export default function Home({ route }) {
 
   const navigation = useNavigation();
+
+  const initialDB = async () => {
+
+    try {  
+      //const db = await SQLite.openDatabaseAsync('presupuesto.db');
+
+      //await db.execAsync('CREATE TABLE IF NOT EXIST gastos (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, amount INTEGER, icon TEXT, type TEXT)');
+
+      //const allGastos = await db.getAllAsync('SELECT * FROM gastos');
+
+      //console.log('Gastos',allGastos);
+
+      //setBillsArr(allGastos)
+      setGastos([...gastos_row, ...billsArr])
+
+    } catch (error) {
+      console.error(error);
+    } finally {
+      console.log('Listo DB');
+    }
+  };
 
   const data = [
     {
@@ -132,17 +156,155 @@ export default function Home({ route }) {
       icon: '#FF0000',
       type: 'gasto'
     },
+    {
+      id: Math.random().toString(),
+      title: 'Traki',
+      amount: 4,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Jugos',
+      amount: 10,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Pizzas',
+      amount: 14,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Empanada y diccionario',
+      amount: 21,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Merienda',
+      amount: 6,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Carne y Jz',
+      amount: 10,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Franela',
+      amount: 5,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Merienda 2',
+      amount: 20,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Monte',
+      amount: 10,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Dulces',
+      amount: 4,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Empanadas',
+      amount: 6,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Gasolina',
+      amount: 15,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Raspado',
+      amount: 4,
+      icon: '#FF0000',
+      type: 'gasto'
+    },
   ];
-  
+
+  const [billsArr, setBillsArr] = useState([]);
   const [gastos_row, setGastos] = useState(data);
 
   const { newGasto } = route.params|| {}; 
 
-        useEffect(() => {
-            if (newGasto) {
-                setGastos([...gastos_row, newGasto]);
-            }
-        }, [newGasto]);
+  const addGastoDB = async (newGasto) => {
+
+    try {
+      
+      //const db = await SQLite.openDatabaseAsync('presupuesto.db');
+      //console.log('newGasto',newGasto);
+      //const resultSet = await db.runAsync('INSERT INTO gastos (title, amount, icon, type) VALUES (?,?,?,?)', newGasto.title, newGasto.amount, newGasto.icon, newGasto.type);
+      //console.log(result.lastInsertRowId, result.changes);
+      
+      let prevGastos = [...billsArr]
+      prevGastos.push({id: resultSet.lastInsertRowId, title: newGasto.title, amount: newGasto.amount, icon: newGasto.icon, type: newGasto.type});
+      setBillsArr(prevGastos);
+
+    } catch (error){
+      console.error(error);
+    } finally {
+      console.log('Listo consulta');
+    }
+};
+
+const deleteGastoDB = async (id) => {
+  try {
+    //const db = await SQLite.openDatabaseAsync('presupuesto.db');
+
+    //await db.runAsync('DELETE FROM gastos WHERE id = $value', { $value: id });
+
+    let prevGastos = [...billsArr].filter((gasto) => gasto.id != id)
+    setBillsArr(prevGastos);
+
+  } catch (error){
+    console.error(error);
+  } finally {
+    console.log('Listo delete');
+  }
+};
+
+  useEffect(() => {
+
+    initialDB();
+
+      if (newGasto) {
+
+          addGastoDB(newGasto);   
+          setGastos([...gastos_row, newGasto]);
+      }
+
+  }, [newGasto]);
+
+  const onDeleteGasto = (id) => {
+    deleteGastoDB(id);
+  }
 
   const onAddGasto = () => {
     navigation.navigate('Gasto', {
@@ -150,11 +312,11 @@ export default function Home({ route }) {
       });
   };
 
-  const onDetail = () => {
+  /*const onDetail = () => {
     navigation.navigate('Detail', {
         gastos: gastos_row,
       });
-  };
+  };*/
 
   return (
     <View style={styles.container}>
