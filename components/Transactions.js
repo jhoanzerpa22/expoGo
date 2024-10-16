@@ -1,9 +1,15 @@
-import { FlatList, View, StyleSheet, Text } from 'react-native';
+import { SectionList, FlatList, View, StyleSheet, Text } from 'react-native';
 
 import TransactionItem from './TransactionItem';
 
 export default function Transactions({ data }) {
-  return (
+  const DATA = [
+    {
+      title: 'Transacciones',
+      data: data,
+    },
+  ];
+  /*return (
     <FlatList
       data={data}
       style={{ flex: 1, maxHeight: '40%' }}
@@ -15,6 +21,18 @@ export default function Transactions({ data }) {
         </View>
       )}
       stickyHeaderIndices={[0]}
+    />
+  );*/
+  return (
+    <SectionList
+      sections={DATA}
+      keyExtractor={(item, index) => item.id}
+      renderItem={({ item }) => <TransactionItem data={item} />}
+      renderSectionHeader={({ section: { title } }) => (
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>{title}</Text>
+        </View>
+      )}
     />
   );
 }
@@ -30,5 +48,14 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: '#666',
+  },
+  container2: {
+    flex: 1,
+    paddingTop: 22,
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
   },
 });
