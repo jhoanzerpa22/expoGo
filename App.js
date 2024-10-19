@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './screens/Home';
 import Gasto from './screens/Gasto';
 import Detail from './screens/Detail';
+import 'setimmediate';
 
 const Stack = createStackNavigator();
 

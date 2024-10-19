@@ -5,7 +5,7 @@ import TransactionItem from './TransactionItem';
 export default function Transactions({ data }) {
   const DATA = [
     {
-      title: 'Transacciones',
+      title: 'Gastos',
       data: data,
     },
   ];
