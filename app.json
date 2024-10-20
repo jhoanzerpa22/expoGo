@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expoGo",
-    "slug": "expoGo",
+    "name": "finanzasZ",
+    "slug": "finanzasZ",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,13 +18,20 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jz.finanzasZ",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-asset"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8bfc8276-a5bb-45f5-82bd-18e1878cbd0a"
+      }
+    }
   }
 }
